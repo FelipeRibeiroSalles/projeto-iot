@@ -1,22 +1,28 @@
-# Projeto IoT com Node-RED, MQTT e MySQL
+#  Projeto IoT - Monitoramento de Temperatura
 
-# Descrição do projeto
-Sistema de monitoramento de temperatura utilizando Node-RED. Os dados são simulados e enviados via MQTT, exibidos em dashbard em tempo real e armazenados em banco de dados MySQL. O sistema também integra uma API externa para comparação com daados reais.
+# Sobre o projeto
+Sistema de monitoramento de temperatura utilizando Node-RED, MQTT e MySQL.
 
-# Arquitetura da solução
-Simulador (Node-RED) → MQTT → Node-RED → Dashboard + MySQL  
-API externa → Node-RED → Dashboard
+Os dados são simulados e exibidos em tempo real em um dashboard, além de serem armazenados em banco de dados.
 
-# Tecnologias utilizadas
+
+# Tecnologias
 - Node-RED
 - MQTT
 - MySQL
 - API Open-Meteo
 
-# Execução
-1. Importar fluxo no Node-RED
-2. Executar banco de dados
-3. Rodar o projeto
+
+# Como executar
+1. Importar o arquivo `fluxo.json` no Node-RED  
+2. Executar o script `banco.sql`  
+3. Acessar: http://localhost:1880/ui  
+
+
+# Arquivos do projeto
+- fluxo.json
+- banco.sql
+- esp32.txt
 
 #Integrantes
 Felipe Ribeiro Salles de Camargo RM: 565224
