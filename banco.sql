@@ -1,0 +1,9 @@
+CREATE DATABASE iot;
+
+USE iot;
+
+CREATE TABLE temperatura (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    valor INT,
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

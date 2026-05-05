@@ -1,0 +1,561 @@
+[
+    {
+        "id": "2dc9c5350cef6433",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a56ea90efbaafe42",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "832c6fc9207988f9",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "b50525e31913ce26",
+        "type": "ui-page",
+        "name": "Dashboard",
+        "ui": "a56ea90efbaafe42",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "832c6fc9207988f9",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "20656f38fdf490c1",
+        "type": "ui-group",
+        "name": "Sensores",
+        "page": "b50525e31913ce26",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ee86de307a739f37",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "598a318296075ea6",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "db": "iot",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "8d42cc2b7b2cc062",
+        "type": "ui-group",
+        "name": "Clima (API)",
+        "page": "b50525e31913ce26",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "e26dc1f02691ab4b",
+        "type": "function",
+        "z": "2dc9c5350cef6433",
+        "name": "function 1",
+        "func": "msg.payload = Math.floor(Math.random() * 50);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 200,
+        "wires": [
+            [
+                "c97a97106a3fa151",
+                "1c383a883df89e5b",
+                "eb3b6bc4ed75f6f0"
+            ]
+        ]
+    },
+    {
+        "id": "c97a97106a3fa151",
+        "type": "ui-gauge",
+        "z": "2dc9c5350cef6433",
+        "name": "Temperatura Sensor",
+        "group": "20656f38fdf490c1",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperatura",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 860,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1c383a883df89e5b",
+        "type": "ui-chart",
+        "z": "2dc9c5350cef6433",
+        "group": "20656f38fdf490c1",
+        "name": "",
+        "label": "Temperatura",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "4",
+        "className": "",
+        "interpolation": "linear",
+        "x": 830,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb3b6bc4ed75f6f0",
+        "type": "ui-text",
+        "z": "2dc9c5350cef6433",
+        "group": "20656f38fdf490c1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Histórico de Temperatura",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "Arial,Arial,Helvetica,sans-serif",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "\"Temperatura: \" + String(msg.payload) + \" °C\"",
+        "valueType": "jsonata",
+        "x": 870,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b1921f2d2f9f6e65",
+        "type": "mqtt in",
+        "z": "2dc9c5350cef6433",
+        "name": "",
+        "topic": "iot/temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee86de307a739f37",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 200,
+        "wires": [
+            [
+                "e26dc1f02691ab4b",
+                "3d890d1005aa9560"
+            ]
+        ]
+    },
+    {
+        "id": "9954f71b32285a9c",
+        "type": "inject",
+        "z": "2dc9c5350cef6433",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "3a514b2aedde8f90"
+            ]
+        ]
+    },
+    {
+        "id": "3a514b2aedde8f90",
+        "type": "function",
+        "z": "2dc9c5350cef6433",
+        "name": "function 2",
+        "func": "msg.payload = Math.floor(Math.random() * 50);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 500,
+        "wires": [
+            [
+                "6641d58f18652091"
+            ]
+        ]
+    },
+    {
+        "id": "6641d58f18652091",
+        "type": "mqtt out",
+        "z": "2dc9c5350cef6433",
+        "name": "",
+        "topic": "iot/temperatura",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ee86de307a739f37",
+        "x": 600,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d25f7915583977ea",
+        "type": "mysql",
+        "z": "2dc9c5350cef6433",
+        "mydb": "598a318296075ea6",
+        "name": "",
+        "x": 670,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d890d1005aa9560",
+        "type": "function",
+        "z": "2dc9c5350cef6433",
+        "name": "function 3",
+        "func": "msg.topic = \"INSERT INTO temperatura (valor) VALUES (\" + msg.payload + \")\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "d25f7915583977ea"
+            ]
+        ]
+    },
+    {
+        "id": "ec8d769cf1313254",
+        "type": "http request",
+        "z": "2dc9c5350cef6433",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=-23.5&longitude=-46.6&current_weather=true",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 380,
+        "wires": [
+            [
+                "3449b9ccd04ed889"
+            ]
+        ]
+    },
+    {
+        "id": "e6d8891e346cdee2",
+        "type": "inject",
+        "z": "2dc9c5350cef6433",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "ec8d769cf1313254"
+            ]
+        ]
+    },
+    {
+        "id": "3449b9ccd04ed889",
+        "type": "function",
+        "z": "2dc9c5350cef6433",
+        "name": "function 4",
+        "func": "let temp = msg.payload.current_weather.temperature;\nmsg.payload = temp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 420,
+        "wires": [
+            [
+                "4b2ba9d8a5f522d8",
+                "af8ff9f5f3f5ad23"
+            ]
+        ]
+    },
+    {
+        "id": "4b2ba9d8a5f522d8",
+        "type": "ui-text",
+        "z": "2dc9c5350cef6433",
+        "group": "8d42cc2b7b2cc062",
+        "order": 1,
+        "width": "6",
+        "height": "2",
+        "name": "Temperatura Real",
+        "label": "Temperatura Real",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "\"API: \" + msg.payload + \" °C\"",
+        "valueType": "jsonata",
+        "x": 830,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "af8ff9f5f3f5ad23",
+        "type": "debug",
+        "z": "2dc9c5350cef6433",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "4f27c57013a94565",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2",
+            "node-red-node-mysql": "3.0.0"
+        }
+    }
+]
