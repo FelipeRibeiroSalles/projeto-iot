@@ -17,3 +17,7 @@ API externa → Node-RED → Dashboard
 1. Importar fluxo no Node-RED
 2. Executar banco de dados
 3. Rodar o projeto
+
+#Integrantes
+Felipe Ribeiro Salles de Camargo RM: 565224
+João Victor Santana dos Santos RM: 56606
